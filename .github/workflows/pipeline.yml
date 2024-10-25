@@ -32,7 +32,7 @@ jobs:
         if: success()
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          color: #00FF00
+          colour: #00FF00
           title: "A new version of Pokedex deployed"
           message: "to [full-stack-open-pokedex](https://full-stack-open-pokedex-1diy.onrender.com) by ${{ github.actor }}"
       - name: Discord failure notification
@@ -40,7 +40,7 @@ jobs:
         if: failure()
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          color: #FF0000
+          colour: #FF0000
           title: "Build failed"
           message: "commit [${{ github.event.head_commit.id }}](${{ github.event.head_commit.url }}) by ${{ github.actor }} broke the build"
 
