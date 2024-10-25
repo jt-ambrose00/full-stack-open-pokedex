@@ -34,7 +34,7 @@ jobs:
           severity: info
           text: "A new version of Pokedex deployed"
           description: "to [full-stack-open-pokedex](https://full-stack-open-pokedex-1diy.onrender.com) by ${{ github.actor }}"
-          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Deployment failure notification
         uses: rjstone/discord-webhook-notify@v1
         if: failure()
