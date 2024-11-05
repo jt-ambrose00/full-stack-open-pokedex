@@ -29,18 +29,18 @@ jobs:
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
       - name: Discord success notification
         uses: stegzilla/discord-notify@v4
-        if: success()
+        if: success() && github.event_name == 'push'
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          colour: #00FF00
+          colour: '#00FF00'
           title: "A new version of Pokedex deployed"
           message: "to [full-stack-open-pokedex](https://full-stack-open-pokedex-1diy.onrender.com) by ${{ github.actor }}"
       - name: Discord failure notification
         uses: stegzilla/discord-notify@v4
-        if: failure()
+        if: failure() && github.event_name == 'push'
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          colour: #FF0000
+          colour: '#FF0000'
           title: "Build failed"
           message: "commit [${{ github.event.head_commit.id }}](${{ github.event.head_commit.url }}) by ${{ github.actor }} broke the build"
 
